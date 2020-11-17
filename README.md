@@ -6,12 +6,16 @@ Coursework for [The Coding Inteview Bootcamp: Algorithms + Data Structures](http
 
 Install npm
 
-Make sure Jest is installed globally
+## Projects
 
-- Windows
+Run npm commands in project folders named below
 
-> `npm install -g jest`
+### exercises
 
-- Linux & macOS
+- Install packages
 
-> `sudo npm install -g jest
+> `npm i`
+
+- Run Jest tests for an exercise, e.g. reversestring
+
+> `npm test reversestring`
