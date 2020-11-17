@@ -6,7 +6,7 @@
 //   reverse('hello') === 'olleh'
 //   reverse('Greetings!') === '!sgniteerG'
 
-const reverse = reverseWithForOf;
+const reverse = reverseWithArrayReduce;
 
 function reverseWithArrayReduce(str) {
   return str.split("").reduce((reversed, char) => char + reversed, "");
