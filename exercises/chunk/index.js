@@ -12,13 +12,10 @@ const chunk = chunkWithArraySlice;
 
 function chunkWithArraySlice(array, size) {
   const chunks = [];
-  const fullChunkCount = Math.floor(array.length / size);
-  const remainingChunkSize = array.length % size;
-  for (let i = 0; i < fullChunkCount; i++) {
-    chunks.push(array.slice(i * size, (i + 1) * size));
-  }
-  if (remainingChunkSize) {
-    chunks.push(array.slice(-remainingChunkSize));
+  let i = 0;
+  while (i < array.length) {
+    chunks.push(array.slice(i, i + size));
+    i += size;
   }
   return chunks;
 }
