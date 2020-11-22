@@ -7,7 +7,22 @@
 //   palindrome("abba") === true
 //   palindrome("abcdefg") === false
 
-function palindrome(str) {
+const palindrome = palindromeWithArrayIndex;
+
+function palindromeWithArrayIndex(str) {
+  let isPalindrome = false;
+  const arr = str.split("");
+  for (let i = 0; i < Math.floor((arr.length + 1) / 2); i++) {
+    if (arr[i] === arr[arr.length - 1 - i]) {
+      isPalindrome = true;
+    } else {
+      return false;
+    }
+  }
+  return isPalindrome;
+}
+
+function palindromeWithArrayEvery(str) {
   return str
     .split("")
     .every((char, i, arr) => char === arr[arr.length - 1 - i]);
