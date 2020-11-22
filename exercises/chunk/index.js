@@ -8,7 +8,23 @@
 // chunk([1, 2, 3, 4, 5], 4) --> [[ 1, 2, 3, 4], [5]]
 // chunk([1, 2, 3, 4, 5], 10) --> [[ 1, 2, 3, 4, 5]]
 
-const chunk = chunkWithForOf;
+const chunk = chunkWithArrayReduce;
+
+function chunkWithArrayReduce(array, size) {
+  const reduced = array.reduce(
+    (arr, val) => {
+      const chunk = arr[arr.length - 1];
+      if (chunk.length === size) {
+        arr.push([val]);
+      } else {
+        chunk.push(val);
+      }
+      return arr;
+    },
+    [[]]
+  );
+  return reduced;
+}
 
 function chunkWithForOf(array, size) {
   const chunks = [];
