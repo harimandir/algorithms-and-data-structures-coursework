@@ -8,9 +8,24 @@
 // chunk([1, 2, 3, 4, 5], 4) --> [[ 1, 2, 3, 4], [5]]
 // chunk([1, 2, 3, 4, 5], 10) --> [[ 1, 2, 3, 4, 5]]
 
-function chunk(array, size) {
-  let chunks = [],
-    chunk = [];
+const chunk = chunkWithForOf;
+
+function chunkWithForOf(array, size) {
+  const chunks = [];
+  for (let val of array) {
+    const chunk = chunks[chunks.length - 1];
+    if (chunk && chunk.length < size) {
+      chunk.push(val);
+    } else {
+      chunks.push([val]);
+    }
+  }
+  return chunks;
+}
+
+function chunkWithModulo(array, size) {
+  const chunks = [];
+  let chunk = [];
   for (let i = 0; i < array.length; i++) {
     chunk.push(array[i]);
     if ((i + 1) % size === 0) {
