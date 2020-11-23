@@ -9,6 +9,36 @@
 //   anagrams('Hi there', 'Bye there') --> False
 
 function anagrams(stringA, stringB) {
+  const charsA = stringA.replace(/\W/g).toLowerCase();
+  const charsB = stringB.replace(/\W/g).toLowerCase();
+  const mapA = strToCharMap(charsA);
+  const mapB = strToCharMap(charsB);
+
+  let diff = mapA.size !== mapB.size;
+  if (!diff) {
+    for (const [char, count] of mapA) {
+      if (mapB.get(char) !== count) {
+        diff = true;
+        break;
+      }
+    }
+  }
+  return !diff;
+}
+
+function strToCharMap(str) {
+  let map = new Map();
+  for (char of str) {
+    if (map.has(char)) {
+      map.set(char, map.get(char) + 1);
+    } else {
+      map.set(char, 1);
+    }
+  }
+  return map;
+}
+
+function anagramsWithArraySort(stringA, stringB) {
   return (
     strToLowerCaseSortedChars(stringA) === strToLowerCaseSortedChars(stringB)
   );
