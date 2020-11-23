@@ -8,11 +8,13 @@
 //   anagrams('RAIL! SAFETY!', 'fairy tales') --> True
 //   anagrams('Hi there', 'Bye there') --> False
 
-function anagrams(stringA, stringB) {
-  const mapA = strToCharObj(stringA.replace(/\W/g).toLowerCase());
-  const mapB = strToCharObj(stringB.replace(/\W/g).toLowerCase());
+const anagrams = anagramsWithObjectComparison;
 
-  let diff = mapA.length !== mapB.length;
+function anagramsWithObjectComparison(stringA, stringB) {
+  const mapA = strToCharObj(stringA);
+  const mapB = strToCharObj(stringB);
+
+  let diff = Object.keys(mapA).length !== Object.keys(mapB).length;
   if (!diff) {
     for (const char in mapA) {
       if (mapA[char] !== mapB[char]) {
@@ -26,15 +28,15 @@ function anagrams(stringA, stringB) {
 
 function strToCharObj(str) {
   let map = {};
-  for (const char of str) {
+  for (const char of str.replace(/\W/g).toLowerCase()) {
     map[char] = map[char] + 1 || 1;
   }
   return map;
 }
 
 function anagramsWithMapComparison(stringA, stringB) {
-  const mapA = strToCharMap(stringA.replace(/\W/g).toLowerCase());
-  const mapB = strToCharMap(stringB.replace(/\W/g).toLowerCase());
+  const mapA = strToCharMap(stringA);
+  const mapB = strToCharMap(stringB);
 
   let diff = mapA.size !== mapB.size;
   if (!diff) {
@@ -50,7 +52,7 @@ function anagramsWithMapComparison(stringA, stringB) {
 
 function strToCharMap(str) {
   let map = new Map();
-  for (const char of str) {
+  for (const char of str.replace(/\W/g).toLowerCase()) {
     if (map.has(char)) {
       map.set(char, map.get(char) + 1);
     } else {
