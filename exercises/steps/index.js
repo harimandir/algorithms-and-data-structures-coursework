@@ -18,6 +18,16 @@
 //       '####'
 
 function steps(n) {
+  for (let row = 1; row <= n; row++) {
+    let step = "";
+    for (let col = 1; col <= n; col++) {
+      step += col <= row ? "#" : " ";
+    }
+    console.log(step);
+  }
+}
+
+function stepsWithRepeat(n) {
   for (let i = 1; i <= n; i++) {
     console.log("#".repeat(i) + " ".repeat(n - i));
   }
