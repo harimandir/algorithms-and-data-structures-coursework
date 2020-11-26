@@ -24,7 +24,7 @@ function matrix(n) {
     startCol = 0,
     endCol = n - 1;
 
-  while (startRow <= endRow && startCol <= endCol) {
+  while (startCol <= endCol && startRow <= endRow) {
     for (let i = startCol; i <= endCol; i++) {
       result[startRow][i] = value++;
     }
