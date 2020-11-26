@@ -17,7 +17,24 @@
 //       '### '
 //       '####'
 
-function steps(n, level = n) {
+const steps = stepsRecursiveWithoutLoop;
+
+function stepsRecursiveWithoutLoop(n, level = 1, step = "") {
+  if (level > n) {
+    return;
+  }
+
+  if (step.length >= n) {
+    console.log(step);
+    steps(n, ++level);
+  } else {
+    const char = step.length < level ? "#" : " ";
+    step += char;
+    steps(n, level, step);
+  }
+}
+
+function stepsRecursiveWithForLoop(n, level = n) {
   if (level <= 0) {
     return;
   }
