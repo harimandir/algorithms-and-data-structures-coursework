@@ -7,7 +7,11 @@
 //   vowels('Why do you ask?') --> 4
 //   vowels('Why?') --> 0
 
-const vowels = vowelsWithStringIncludesLoop;
+const vowels = vowelsWithMatch;
+
+function vowelsWithMatch(str) {
+  return (str.match(/[aeiou]/gi) ?? []).length;
+}
 
 function vowelsWithStringIncludesLoop(str) {
   const vowels = "aeiou";
