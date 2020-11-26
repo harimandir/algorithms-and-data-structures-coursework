@@ -15,6 +15,22 @@
 //       '#####'
 
 function pyramid(n) {
+  let baseWidth = 2 * n - 1;
+  let midpoint = Math.floor((baseWidth + 1) / 2);
+  for (let row = 1; row <= n; row++) {
+    let level = "";
+    for (let col = 1; col <= baseWidth; col++) {
+      if (col > midpoint - row && col < midpoint + row) {
+        level += "#";
+      } else {
+        level += " ";
+      }
+    }
+    console.log(level);
+  }
+}
+
+function pyramidWithNestedLoops(n) {
   for (let row = 1; row <= n; row++) {
     let level = "";
     let side = n - row;
