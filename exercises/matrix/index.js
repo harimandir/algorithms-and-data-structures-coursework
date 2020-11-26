@@ -18,26 +18,27 @@
 function matrix(n) {
   const result = new Array(n).fill().map(() => []);
 
-  let startRow = 0,
+  let value = 1,
+    startRow = 0,
     endRow = n - 1,
     startCol = 0,
     endCol = n - 1;
 
-  for (let v = 1; startRow <= endRow && startCol <= endCol; ) {
+  while (startRow <= endRow && startCol <= endCol) {
     for (let i = startCol; i <= endCol; i++) {
-      result[startRow][i] = v++;
+      result[startRow][i] = value++;
     }
     startRow++;
     for (let i = startRow; i <= endRow; i++) {
-      result[i][endCol] = v++;
+      result[i][endCol] = value++;
     }
     endCol--;
     for (let i = endCol; i >= startCol; i--) {
-      result[endRow][i] = v++;
+      result[endRow][i] = value++;
     }
     endRow--;
     for (let i = endRow; i >= startRow; i--) {
-      result[i][startCol] = v++;
+      result[i][startCol] = value++;
     }
     startCol++;
   }
