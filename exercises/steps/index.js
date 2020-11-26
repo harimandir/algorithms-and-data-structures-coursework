@@ -27,11 +27,11 @@ function stepsRecursiveWithoutLoop(n, level = 1, step = "") {
   if (step.length >= n) {
     console.log(step);
     steps(n, ++level);
-  } else {
-    const char = step.length < level ? "#" : " ";
-    step += char;
-    steps(n, level, step);
+    return;
   }
+
+  const col = step.length < level ? "#" : " ";
+  steps(n, level, step + col);
 }
 
 function stepsRecursiveWithForLoop(n, level = n) {
