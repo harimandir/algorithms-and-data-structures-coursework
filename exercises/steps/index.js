@@ -18,6 +18,21 @@
 //       '####'
 
 function steps(n) {
+  step(n, n);
+}
+
+function step(level, n) {
+  if (level > 1) {
+    step(level - 1, n);
+  }
+  let str = "";
+  for (let i = 1; i <= n; i++) {
+    str += i <= level ? "#" : " ";
+  }
+  console.log(str);
+}
+
+function stepsWithNestedLoops(n) {
   for (let row = 1; row <= n; row++) {
     let step = "";
     for (let col = 1; col <= n; col++) {
