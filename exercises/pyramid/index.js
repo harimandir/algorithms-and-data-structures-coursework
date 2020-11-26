@@ -14,7 +14,28 @@
 //       ' ### '
 //       '#####'
 
-function pyramid(n) {
+function pyramid(
+  n,
+  row = n,
+  baseWidth = 2 * n - 1,
+  midpoint = Math.floor((baseWidth + 1) / 2)
+) {
+  if (row < 1) {
+    return;
+  }
+  pyramid(n, row - 1, baseWidth, midpoint);
+  let level = "";
+  for (let col = 1; col <= baseWidth; col++) {
+    if (col > midpoint - row && col < midpoint + row) {
+      level += "#";
+    } else {
+      level += " ";
+    }
+  }
+  console.log(level);
+}
+
+function pyramidWithNestedLoopsAndMidpoint(n) {
   let baseWidth = 2 * n - 1;
   let midpoint = Math.floor((baseWidth + 1) / 2);
   for (let row = 1; row <= n; row++) {
