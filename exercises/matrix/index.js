@@ -16,7 +16,7 @@
 //     [10,  9,  8, 7]]
 
 function matrix(n) {
-  const result = new Array(n).fill(null).map(() => new Array(n).fill(null));
+  const result = new Array(n).fill().map(() => []);
 
   let startRow = 0,
     endRow = n - 1,
