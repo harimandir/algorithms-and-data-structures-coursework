@@ -18,15 +18,17 @@
 //       '####'
 
 function steps(n) {
-  step(n, n);
+  step(n);
 }
 
-function step(level, n) {
-  if (level > 1) {
-    step(level - 1, n);
+function step(len, level = len) {
+  if (level === 0) {
+    return;
   }
+  step(len, level - 1);
+
   let str = "";
-  for (let i = 1; i <= n; i++) {
+  for (let i = 1; i <= len; i++) {
     str += i <= level ? "#" : " ";
   }
   console.log(str);
