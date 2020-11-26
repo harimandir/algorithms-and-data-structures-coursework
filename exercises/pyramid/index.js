@@ -15,8 +15,25 @@
 //       '#####'
 
 function pyramid(n) {
-  let sideWidth = n - 1;
+  for (let row = 1; row <= n; row++) {
+    let level = "";
+    let side = n - row;
+    for (let col = 1; col <= 2 * n - 1; col++) {
+      if (col <= side) {
+        level += " ";
+      } else if (col > side + (2 * row - 1)) {
+        level += " ";
+      } else {
+        level += "#";
+      }
+    }
+    console.log(level);
+  }
+}
+
+function pyramidWithForLoopAndRepeat(n) {
   let centerWidth = 1;
+  let sideWidth = n - centerWidth;
   for (let i = 1; i <= n; i++) {
     const side = " ".repeat(sideWidth);
     const level = side + "#".repeat(centerWidth) + side;
