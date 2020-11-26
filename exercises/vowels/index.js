@@ -7,12 +7,24 @@
 //   vowels('Why do you ask?') --> 4
 //   vowels('Why?') --> 0
 
-const vowels = vowelsWithArrayIndexLoop;
+const vowels = vowelsWithStringIncludesLoop;
 
-function vowelsWithArrayIndexLoop(str) {
+function vowelsWithStringIncludesLoop(str) {
+  const vowels = "aeiou";
   let count = 0;
   for (let char of str.toLowerCase()) {
-    if (["a", "e", "i", "o", "u"].indexOf(char) >= 0) {
+    if (vowels.includes(char)) {
+      count++;
+    }
+  }
+  return count;
+}
+
+function vowelsWithArrayIncludesLoop(str) {
+  const vowels = ["a", "e", "i", "o", "u"];
+  let count = 0;
+  for (let char of str.toLowerCase()) {
+    if (vowels.includes(char)) {
       count++;
     }
   }
