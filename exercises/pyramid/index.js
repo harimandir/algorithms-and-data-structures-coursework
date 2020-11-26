@@ -14,7 +14,33 @@
 //       ' ### '
 //       '#####'
 
-function pyramid(
+const pyramid = pyramidWithRecursion;
+
+function pyramidWithRecursion(
+  n,
+  baseWidth = 2 * n - 1,
+  midpoint = Math.floor((baseWidth + 1) / 2),
+  row = n,
+  col = 1,
+  level = ""
+) {
+  if (row < 1) {
+    return;
+  }
+  if (col <= baseWidth) {
+    if (col > midpoint - row && col < midpoint + row) {
+      level += "#";
+    } else {
+      level += " ";
+    }
+    pyramid(n, baseWidth, midpoint, row, col + 1, level);
+    return;
+  }
+  pyramid(n, baseWidth, midpoint, row - 1, 1, "");
+  console.log(level);
+}
+
+function pyramidWithRecursionAndLoop(
   n,
   row = n,
   baseWidth = 2 * n - 1,
