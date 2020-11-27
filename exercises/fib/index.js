@@ -8,18 +8,18 @@
 // Example:
 //   fib(4) === 3
 
-const fib = fibMemoizedRecursive;
+const fib = memoize(fibRecursive);
 
-const fibMemo = new Map([]);
-function fibMemoizedRecursive(n) {
-  if (!fibMemo.has(n)) {
-    if (n < 2) {
-      fibMemo.set(n, n);
-    } else {
-      fibMemo.set(n, fib(n - 2) + fib(n - 1));
+function memoize(fn) {
+  const cache = {};
+  return function (...args) {
+    if (cache[args]) {
+      return cache[args];
     }
-  }
-  return fibMemo.get(n);
+    let result = fn.apply(this, args);
+    cache[args] = result;
+    return result;
+  };
 }
 
 function fibWithLoopAndArray(n) {
