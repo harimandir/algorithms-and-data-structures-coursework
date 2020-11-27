@@ -8,7 +8,19 @@
 // Example:
 //   fib(4) === 3
 
-const fib = fibWithLoopAndArray;
+const fib = fibMemoizedRecursive;
+
+const fibMemo = new Map([]);
+function fibMemoizedRecursive(n) {
+  if (!fibMemo.has(n)) {
+    if (n < 2) {
+      fibMemo.set(n, n);
+    } else {
+      fibMemo.set(n, fib(n - 2) + fib(n - 1));
+    }
+  }
+  return fibMemo.get(n);
+}
 
 function fibWithLoopAndArray(n) {
   const series = [0, 1];
