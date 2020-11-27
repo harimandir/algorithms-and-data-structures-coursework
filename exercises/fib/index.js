@@ -8,7 +8,17 @@
 // Example:
 //   fib(4) === 3
 
-function fib(n) {
+const fib = fibWithLoopAndArray;
+
+function fibWithLoopAndArray(n) {
+  const series = [0, 1];
+  for (let i = 2; i <= n; i++) {
+    series.push(series[i - 2] + series[i - 1]);
+  }
+  return series[n];
+}
+
+function fibWithForLoop(n) {
   if (n < 2) {
     return n;
   }
