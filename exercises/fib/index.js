@@ -12,6 +12,21 @@ function fib(n) {
   if (n < 2) {
     return n;
   }
+  let first = 0,
+    second = 1,
+    val;
+  for (let i = 2; i <= n; i++) {
+    val = first + second;
+    first = second;
+    second = val;
+  }
+  return val;
+}
+
+function fibRecursive(n) {
+  if (n < 2) {
+    return n;
+  }
   return fib(n - 2) + fib(n - 1);
 }
 
