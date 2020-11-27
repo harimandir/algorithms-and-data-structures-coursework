@@ -8,11 +8,16 @@
 // Example:
 //   fib(4) === 3
 
-const fib = memoize(fibRecursive);
+const fib = memoize((n) => {
+  if (n < 2) {
+    return n;
+  }
+  return fib(n - 2) + fib(n - 1);
+});
 
 function memoize(fn) {
   const cache = {};
-  return function (...args) {
+  return (...args) => {
     if (cache[args]) {
       return cache[args];
     }
@@ -49,7 +54,7 @@ function fibRecursive(n) {
   if (n < 2) {
     return n;
   }
-  return fib(n - 2) + fib(n - 1);
+  return fibRecursive(n - 2) + fibRecursive(n - 1);
 }
 
 module.exports = fib;
