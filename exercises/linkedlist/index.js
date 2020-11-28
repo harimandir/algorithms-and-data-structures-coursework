@@ -3,8 +3,8 @@
 // See 'directions' document
 
 class Node {
-  constructor(data, node) {
-    (this.data = data), (this.next = node);
+  constructor(data, next) {
+    (this.data = data), (this.next = next);
   }
 }
 
