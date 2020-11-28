@@ -9,6 +9,8 @@ class Node {
   }
 }
 
-class LinkedList {}
+class LinkedList {
+  head = null;
+}
 
 module.exports = { Node, LinkedList };
