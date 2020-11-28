@@ -13,7 +13,25 @@ class LinkedList {
   head = null;
 
   insertFirst(data) {
-    this.head = new Node(data, this.head);
+    this.insertAt(data, 0);
+  }
+
+  insertAt(data, index) {
+    if (index === 0) {
+      this.head = new Node(data, this.head);
+      return;
+    }
+
+    let prev = this.getAt(index - 1) ?? this.getLast();
+    if (!prev) {
+      this.head = new Node(data);
+      return;
+    }
+    prev.next = new Node(data, prev.next);
+  }
+
+  insertLast(data) {
+    this.insertAt(data, this.size());
   }
 
   size() {
@@ -27,49 +45,7 @@ class LinkedList {
   }
 
   getFirst() {
-    return this.head;
-  }
-
-  getLast() {
-    let node = this.head;
-    while (node?.next) {
-      node = node.next;
-    }
-    return node;
-  }
-
-  clear() {
-    this.head = null;
-  }
-
-  removeFirst() {
-    this.head = this.head?.next ?? null;
-  }
-
-  removeLast() {
-    if (this.head === null) {
-      return;
-    }
-    let node = this.head,
-      next = node.next;
-    if (next === null) {
-      this.head = null;
-    }
-    while (next?.next) {
-      node = next;
-      next = node.next;
-    }
-    node.next = null;
-  }
-
-  insertLast(data) {
-    const node = new Node(data);
-    const tail = this.getLast();
-    if (tail) {
-      tail.next = node;
-    } else {
-      this.head = node;
-    }
+    return this.getAt(0);
   }
 
   getAt(index) {
@@ -79,10 +55,19 @@ class LinkedList {
       node = node?.next ?? null;
       i++;
     }
-    if (i !== index) {
-      return null;
-    }
-    return node;
+    return i === index ? node : null;
+  }
+
+  getLast() {
+    return this.getAt(this.size() - 1);
+  }
+
+  clear() {
+    this.head = null;
+  }
+
+  removeFirst() {
+    this.removeAt(0);
   }
 
   removeAt(index) {
@@ -100,18 +85,8 @@ class LinkedList {
     }
   }
 
-  insertAt(data, index) {
-    if (index === 0) {
-      this.head = new Node(data, this.head);
-      return;
-    }
-
-    let prev = this.getAt(index - 1) ?? this.getLast();
-    if (!prev) {
-      this.head = new Node(data);
-      return;
-    }
-    prev.next = new Node(data, prev.next);
+  removeLast() {
+    this.removeAt(this.size() - 1);
   }
 }
 
