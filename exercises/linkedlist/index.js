@@ -51,7 +51,7 @@ class LinkedList {
       return;
     }
     let node = this.head,
-      next = this.head.next;
+      next = node.next;
     if (next === null) {
       this.head = null;
     }
@@ -78,6 +78,9 @@ class LinkedList {
     while (i < index && node?.next) {
       node = node?.next ?? null;
       i++;
+    }
+    if (i !== index) {
+      return null;
     }
     return node;
   }
