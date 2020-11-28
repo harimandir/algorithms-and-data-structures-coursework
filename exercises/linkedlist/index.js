@@ -94,18 +94,10 @@ class LinkedList {
       return;
     }
 
-    let prev,
-      next,
-      node = this.head,
-      i = 0;
-    while (i < index && node) {
-      prev = node;
-      node = prev.next;
+    let prev = this.getAt(index - 1),
+      node = prev?.next ?? null,
       next = node?.next ?? null;
-      i++;
-    }
-
-    if (i !== index) {
+    if (!node) {
       return;
     }
     prev.next = next;
