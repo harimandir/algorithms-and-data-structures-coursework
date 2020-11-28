@@ -48,12 +48,14 @@ class QueueFromStacksOnAdd {
   stash = new Stack();
 
   add(element) {
-    while (this.stack.peek() !== undefined) {
-      this.stash.push(this.stack.pop());
-    }
+    this._switchStacks(this.stack, this.stash);
     this.stack.push(element);
-    while (this.stash.peek() !== undefined) {
-      this.stack.push(this.stash.pop());
+    this._switchStacks(this.stash, this.stack);
+  }
+
+  _switchStacks(from, to) {
+    while (from.peek() !== undefined) {
+      to.push(from.pop());
     }
   }
 
