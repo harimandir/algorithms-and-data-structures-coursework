@@ -12,19 +12,13 @@
 // Answer: [1, 3, 2]
 
 function levelWidth(root) {
-  let prev,
-    node = root,
+  let node = root,
     step = "|",
     queue = [root, step],
     level = 0,
     widths = [0];
-  while (node) {
+  while (queue.length > 1) {
     node = queue.shift();
-    if (node === prev) {
-      widths.pop();
-      break;
-    }
-    prev = node;
     if (node === step) {
       queue.push(node);
       widths.push(0);
