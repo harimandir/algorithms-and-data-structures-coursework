@@ -34,7 +34,7 @@ class Tree {
     while (queue.length) {
       const node = queue.shift();
       fn(node);
-      queue = queue.concat(node.children);
+      queue.push(...node.children);
     }
   }
 
@@ -43,7 +43,7 @@ class Tree {
     while (queue.length) {
       const node = queue.shift();
       fn(node);
-      queue = node.children.concat(queue);
+      queue.unshift(...node.children);
     }
   }
 }
