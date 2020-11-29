@@ -32,10 +32,9 @@ class Tree {
   traverseBF(fn) {
     let queue = [this.root];
     while (queue.length) {
-      const node = queue[0];
+      const node = queue.shift();
       fn(node);
       queue = queue.concat(node.children);
-      queue.shift();
     }
   }
 
