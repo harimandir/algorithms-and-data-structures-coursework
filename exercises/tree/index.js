@@ -24,12 +24,27 @@ class Node {
   remove(data) {
     this.children = this.children.filter((node) => node.data !== data);
   }
+
+  traverseBF(fn) {
+    for (let node of this.children) {
+      fn(node);
+    }
+    for (let node of this.children) {
+      node.traverseBF(fn);
+    }
+  }
 }
 
 class Tree {
   root = null;
 
-  traverseBF() {}
+  traverseBF(fn) {
+    if (!this.root) {
+      return;
+    }
+    fn(this.root);
+    this.root.traverseBF(fn);
+  }
 
   traverseDF() {}
 }
