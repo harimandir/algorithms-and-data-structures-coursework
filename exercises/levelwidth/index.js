@@ -15,17 +15,15 @@ function levelWidth(root) {
   let node = root,
     step = "|",
     queue = [root, step],
-    level = 0,
     widths = [0];
   while (queue.length > 1) {
     node = queue.shift();
     if (node === step) {
       queue.push(node);
       widths.push(0);
-      level++;
     } else {
       queue.push(...node.children);
-      widths[level]++;
+      widths[widths.length - 1]++;
     }
   }
   return widths;
