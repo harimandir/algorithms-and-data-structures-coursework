@@ -88,6 +88,15 @@ class LinkedList {
   removeLast() {
     this.removeAt(this.size() - 1);
   }
+
+  forEach(fn) {
+    let node = this.head;
+    let i = 0;
+    while (node) {
+      fn(node, i++);
+      node = node.next;
+    }
+  }
 }
 
 module.exports = { Node, LinkedList };
