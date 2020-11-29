@@ -17,19 +17,21 @@ function levelWidth(root) {
     step = "|",
     queue = [root, step],
     level = 0,
-    widths = [];
+    widths = [0];
   while (node) {
     node = queue.shift();
     if (node === prev) {
+      widths.pop();
       break;
     }
     prev = node;
     if (node === step) {
       queue.push(node);
+      widths.push(0);
       level++;
     } else {
       queue.push(...node.children);
-      widths[level] = (widths[level] || 0) + 1;
+      widths[level]++;
     }
   }
   return widths;
