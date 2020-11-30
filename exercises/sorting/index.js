@@ -32,7 +32,15 @@ function selectionSort(arr) {
   return arr;
 }
 
-function mergeSort(arr) {}
+function mergeSort(arr) {
+  let left = arr.slice(0, arr.length / 2);
+  let right = arr.slice(arr.length / 2);
+  if (left.length > 1) {
+    left = mergeSort(left);
+    right = mergeSort(right);
+  }
+  return merge(left, right);
+}
 
 function merge(left, right) {
   const result = [];
