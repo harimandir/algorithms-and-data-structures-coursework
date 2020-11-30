@@ -20,10 +20,13 @@ function selectionSort(arr) {
     let minIndex = i;
     for (let j = i + 1; j < arr.length; j++) {
       if (arr[minIndex] > arr[j]) {
-        let min = arr[j];
-        arr[j] = arr[minIndex];
-        arr[minIndex] = min;
+        minIndex = j;
       }
+    }
+    if (i !== minIndex) {
+      let min = arr[minIndex];
+      arr[minIndex] = arr[i];
+      arr[i] = min;
     }
   }
   return arr;
