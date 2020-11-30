@@ -33,12 +33,12 @@ function selectionSort(arr) {
 }
 
 function mergeSort(arr) {
-  let left = arr.slice(0, arr.length / 2);
-  let right = arr.slice(arr.length / 2);
-  if (left.length > 1) {
-    left = mergeSort(left);
-    right = mergeSort(right);
+  if (arr.length < 2) {
+    return arr;
   }
+  const midpoint = Math.floor(arr.length / 2);
+  const left = mergeSort(arr.slice(0, midpoint));
+  const right = mergeSort(arr.slice(midpoint));
   return merge(left, right);
 }
 
