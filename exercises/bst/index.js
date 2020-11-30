@@ -33,10 +33,7 @@ class Node {
       return this;
     }
     const next = data < this.data ? this.left : this.right;
-    if (next === null) {
-      return next;
-    }
-    return next.contains(data);
+    return next?.contains(data) ?? null;
   }
 }
 
